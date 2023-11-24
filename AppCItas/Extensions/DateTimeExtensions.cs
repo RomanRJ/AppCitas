@@ -1,0 +1,16 @@
+﻿namespace AppCitas.Extensions
+{
+    public static class DateTimeExtensions
+    {
+        public static int CalculateAge(this DateOnly dob)
+        {
+            var today = DateOnly.FromDateTime(DateTime.UtcNow);
+            var age = today.Year - dob.Year;
+
+            if (dob > today.AddYears(-age)) age--; //en caso de que todavía no cumpla años 
+
+            return age;
+        }
+        
+    }
+}

@@ -2,6 +2,7 @@
 using AppCitas.Interfaces;
 using AppCitas.Services;
 using Microsoft.EntityFrameworkCore;
+using AppCitas.Data;
 
 namespace AppCitas.Extensions;
 
@@ -17,6 +18,8 @@ public static class ApplicationServiceExtensions
 
         services.AddCors();
         services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         
         return services;
     }
