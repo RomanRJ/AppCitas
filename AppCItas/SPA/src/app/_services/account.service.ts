@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
+import { environment } from '../../environments/environment';
 import { IUser } from '../_models/iuser';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { IUser } from '../_models/iuser';
 })
 export class AccountService {
 
-  baseUrl = "https://localhost:5001/api/";
+  baseUrl = environment.apiUrl;
   private currentUserSource = new BehaviorSubject<IUser | null>(null);
   currentUser$ = this.currentUserSource.asObservable();
 
